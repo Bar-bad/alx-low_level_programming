@@ -7,7 +7,7 @@
  * Return: number of bytes in the intitial segment of `s`
  * Always (0)
  */
-unsigned int _strspn(chhar *s, char *accept)
+unsigned int _strspn(char *s, char *accept)
 {
 	unsigned int n = 0;
 	int k;
