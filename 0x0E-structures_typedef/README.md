@@ -1,4 +1,4 @@
-#C - Structures, typedef
+#C - Structures, typedef readme file
 ##General Learning Objectives
 	* What are the structures, when, why and how to use them
 	* How to use `typedef`
