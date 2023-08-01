@@ -10,16 +10,30 @@
  */
 int sum_them_all(const unsigned int n, ...)
 {
-	va_list mal; /* declare a variable 'mal' of type 'va_list'. the type 'va_list' is provided by the 'stdarg.h' header. It is used for variable argument lists. */
+	va_list mal; /*
+			* declare a variable 'mal' of type 'va_list'. the type
+			* 'va_list' is provided by the 'stdarg.h' header.
+			* It is used for variable argument lists.
+			*/
 
-	unsigned int counter, sum = 0; /*declare 2 unsignedintegers 'counter' and sum'. Initialize 'sum' to 0. */
+	unsigned int counter, sum = 0; /*
+					  * declare 2 unsignedintegers 'counter'
+					 * and sum'. Initialize 'sum' to 0.
+					 */
 
-	va_start(mal, n); /* initialize 'mal' variable with the variable argument list's starting address. Argument n is used to determine the variable argument's starting point */
+	va_start(mal, n); /*
+			     * initialize 'mal' variable with the variable argument
+			     * list's starting address. Argument n is used to determine the variable
+			     * argument's starting point
+			     */
 
 	for (counter = 0; counter < n; counter++)
 		sum += va_arg(mal, int);
 
-	va_end(mal); /* clean up and terminate the use of the variable arguent list 'mal' */
+	va_end(mal); /*
+			* clean up and terminate the
+			* use of the variable arguent list 'mal'
+			*/
 
 	return (sum); /* return the variable arguments' calculated sum */
 }
