@@ -11,7 +11,7 @@
 void array_iterator(int *array, size_t size, void (*action)(int))
 {
 	unsigned int count;
-	
+
 	/*
 	 * check if the array or the action function is NULL
 	 * return early if any of them is null, since there is
