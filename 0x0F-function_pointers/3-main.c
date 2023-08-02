@@ -1,7 +1,7 @@
 #include "function_pointers.h"
+#include "3-calc.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include "3-calc.h"
 /**
  * main - function that prints the result o simple operations
  * @argc: number of arguments that are supplied to the program
@@ -27,8 +27,16 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	if (get_op_func(operator) == NULL || operator[1] != '\0')
 	{
 		printf("Error\n");
+		exit(99);
+	}
+
+	if ((*operator == '/' && secondNumber == 0) ||
+			(*operator == '%' && secondNumber == 0))
+	{
+		printf("Error\n");
 		exit(100);
 	}
+
 	printf("%d\n", get_op_func(operator)(firstNumber, secondNumber));
 	return (0);
 }
