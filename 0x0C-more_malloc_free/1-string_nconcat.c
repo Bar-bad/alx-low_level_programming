@@ -20,24 +20,24 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		lengthofs2++;
 
 	if (n < lengthofs2)
-		s = malloc(sizeof(char) * (lengthofs1 + n + 1));
+		concatString = malloc(sizeof(char) * (lengthofs1 + n + 1));
 	else
-		s = malloc(sizeof(char) * (lengthofs1 + lengthofs2 + 1));
+		concatString = malloc(sizeof(char) * (lengthofs1 + lengthofs2 + 1));
 
-	if (!s)
+	if (!concatString)
 		return (NULL);
 
 	while (counts1 < lengthofs1)
 	{
-		s[counts1] = s1[counts1];
-		counts1;
+		concatString[counts1] = s1[counts1];
+		counts1++;
 	}
 
 	while (n < lengthofs2 && counts1 < (lengthofs1 + n))
-		s[counts1++] = s2[counts2++];
+		concatString[counts1++] = s2[counts2++];
 	while (n >= lengthofs2 && counts1 < (lengthofs1 + lengthofs2))
-		s[counts1++ = s2[counts2++];
+		concatString[counts1++] = s2[counts2++];
 
-	s[counts1] = '\0';
-	return (s);
+	concatString[counts1] = '\0';
+	return (concatString);
 }
