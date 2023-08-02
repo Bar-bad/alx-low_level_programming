@@ -38,7 +38,7 @@ int **alloc_grid(int width, int height)
 	{
 		for (b = 0; b < width; b++)
 		{
-			arr[a][b] = 0;
+			int_2Darray[a][b] = 0;
 		}
 	}
 	return (int_2Darray);
