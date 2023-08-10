@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
 			exit(99);
 		}
 
-		/*Read up to `1024` bytes from source file onto buffer for the next iteration*/
+		/*Read up to `1024` bytes from source file to buffer for the next iteration*/
 		read_retVal = read(source_fd, newBuff, 1024);
 		/*Open destination file in the mode to append for the next iteration*/
 		dest_fd = open(argv[2], O_WRONLY | O_APPEND);
