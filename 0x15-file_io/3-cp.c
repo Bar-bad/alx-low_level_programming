@@ -78,35 +78,43 @@ int main(int argc, char *argv[])
 	/* Create/open destination file for writing, with appropriate permissions */
 	dest_fd = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
-	if (dest_fd == -1)
-	{
+	/* Loop used t read from source and read to destination filr */
+	do {
+		/* Condition to check for errors during the reading from source file */
+		if (source_fd == -1 || read_retVal == -1)
+		{
 		dprintf(STDERR_FILENO,
-				"Error: Can't open %s for writing\n", argv[2]);
+				"Error: Can't read from file %s\n", argv[1]);
 		free(newBuff);
-		file_closer(source_fd);
-		exit(99);
-	}
+		exit(98);
+		}
 
-	/* Loop used to read from source file and then write into destination file */
-	while ((read_retVal = read(source_fd, newBuff, 1024)) > 0)
-	{
+		/* Write the data from the buffer onto the destination file */
 		write_retVal = write(dest_fd, newBuff, read_retVal);
 
-		if (write_retVal == -1)
+		/* Condition to check for errors during writing to the destination file */
+		if (dest_fd == -1 || write_retVal == -1)
 		{
 			dprintf(STDERR_FILENO,
 					"Error: Can't write to %s\n", argv[2]);
 			free(newBuff);
-			file_closer(source_fd);
-			file_closer(dest_fd);
 			exit(99);
 		}
+
+		/*Read up to `1024` bytes from source file onto buffer for the next iteration*/
+		read_retVal = read(source_fd, newBuff, 1024);
+		/*Open destination file in the mode to append for the next iteration*/
+		dest_fd = open(argv[2], O_WRONLY | O_APPEND);
 	}
+
+	while (read_retVal > 0);
+
+	/* Free allocated buffer */
+	free(newBuff);
 
 	/* Close source and destination files */
 	file_closer(source_fd);
 	file_closer(dest_fd);
-	free(newBuff);
 
 	return (0);
 }
