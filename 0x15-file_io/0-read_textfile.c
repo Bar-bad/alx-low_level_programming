@@ -33,8 +33,8 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	rdBytes = read(fileDesc, dataBuffer, letters);/*Store upto "letters" bytes
 							* read from the text file nto "dataBuffer"
 							*/
-	wrBytes = write(STDOUT_FILENO, dataBuffer, rdBytes);/*Write upto "rdBytes" bytes
-						      * from "dataBuffer" to the stdout
+	wrBytes = write(STDOUT_FILENO, dataBuffer, rdBytes);/*Write upto "rdBytes"
+							      *bytes from "dataBuffer" to the stdout
 						      */
 
 	free(dataBuffer);
