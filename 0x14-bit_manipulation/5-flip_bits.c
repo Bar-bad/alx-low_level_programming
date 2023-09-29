@@ -7,7 +7,7 @@
  *
  * Return: the no. of bits to be changed
  */
-unsigned int flip_bits(undsigned long int n, unsigned long int m)
+unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
 	int lcount, counter = 0;
 	unsigned long int valCurr;
