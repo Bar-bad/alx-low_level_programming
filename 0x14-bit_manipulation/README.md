@@ -1,3 +1,3 @@
-# C - Bit manipulation readme file
+C - Bit manipulation readme file
 
 
